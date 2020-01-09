@@ -17,16 +17,15 @@ class MainW(QMainWindow, Ui_MainWindow):
 
     def random_circle(self):
         self.draw = True
-        self.circles.append([(random.randrange(0, 800), random.randrange(0, 500)), random.randrange(10, 300),
-                             (random.randrange(0, 255), random.randrange(0, 255), random.randrange(0, 255))])
+        self.circles.append([(random.randrange(0, 800), random.randrange(0, 500)), random.randrange(10, 300)])
         self.update()
 
     def paintEvent(self, event):
         if self.draw:
             qp = QPainter()
             qp.begin(self)
+            qp.setBrush(QColor(255, 255, 0))
             for el in self.circles:
-                qp.setBrush(QColor(*el[2]))
                 self.draw_circle(qp, el)
             qp.end()
 
